@@ -3,634 +3,1656 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makmur Jaya Abadi - Jasa Reparasi & Penyedia Material Konstruksi</title>
+    <title>Bangunankediri.com - Solusi Pembangunan dan Renovasi di Kediri</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset dan variabel warna */
+        /* VARIABEL CSS */
         :root {
-            --biru: #1e3a8a;
-            --biru-muda: #3b82f6;
-            --orange: #f97316;
-            --orange-muda: #fdba74;
-            --abu: #f8fafc;
-            --abu-gelap: #64748b;
-            --putih: #ffffff;
-            --hitam: #1e293b;
+            --biru-langit: #3AA6D0;
+            --orange-terang: #FF8B00;
+            --orange-lembut: #FFE5C1;
+            --abu-muda: #F8F9FA;
+            --biru-muda: #E6F4F9;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+            --border-radius: 8px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
-        
+
+        /* RESET & BASE STYLES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
-            color: var(--hitam);
-            background-color: var(--putih);
+            color: var(--text-dark);
+            overflow-x: hidden;
         }
-        
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-        
-        /* Header dan Navigasi */
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--orange-terang);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--orange-terang);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--biru-langit);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-secondary {
+            background-color: var(--biru-langit);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--orange-terang);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* HEADER & NAVIGATION */
         header {
-            background-color: var(--putih);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1000;
         }
-        
+
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
+            padding: 20px 0;
         }
-        
+
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: var(--biru);
+            color: var(--biru-langit);
         }
-        
+
         .logo span {
-            color: var(--orange);
+            color: var(--orange-terang);
         }
-        
-        .nav-links {
+
+        .nav-menu {
             display: flex;
-            list-style: none;
         }
-        
-        .nav-links li {
+
+        .nav-item {
             margin-left: 30px;
         }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--hitam);
+
+        .nav-link {
             font-weight: 500;
-            transition: color 0.3s;
+            position: relative;
         }
-        
-        .nav-links a:hover {
-            color: var(--orange);
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--orange-terang);
+            transition: var(--transition);
         }
-        
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
         .hamburger {
             display: none;
             cursor: pointer;
-            font-size: 1.5rem;
         }
-        
-        /* Hero Section */
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--text-dark);
+            transition: var(--transition);
+        }
+
+        /* HERO SECTION */
         .hero {
-            background: linear-gradient(135deg, var(--biru) 0%, var(--biru-muda) 100%);
-            color: var(--putih);
-            padding: 80px 0;
+            background: linear-gradient(rgba(58, 166, 208, 0.8), rgba(58, 166, 208, 0.8)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: var(--white);
+            padding: 180px 0 100px;
             text-align: center;
         }
-        
+
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 30px;
         }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--orange);
-            color: var(--putih);
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
         }
-        
-        .cta-button:hover {
-            background-color: var(--orange-muda);
-            color: var(--hitam);
-        }
-        
-        /* Section Styling */
-        section {
-            padding: 80px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2rem;
-            color: var(--biru);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--orange);
-        }
-        
-        /* Tentang Kami */
-        .about-content {
+
+        .hero-buttons .btn {
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 10px;
         }
-        
-        .about-text {
-            flex: 1;
+
+        /* KEUNGGULAN SECTION */
+        .keunggulan {
+            background-color: var(--white);
         }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Layanan */
-        .services {
-            background-color: var(--abu);
-        }
-        
-        .services-grid {
+
+        .keunggulan-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
-        
-        .service-card {
-            background-color: var(--putih);
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
+
+        .keunggulan-item {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
         }
-        
+
+        .keunggulan-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .keunggulan-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--biru-langit);
+        }
+
+        .keunggulan-item h3 {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        /* LAYANAN RINGKAS SECTION */
+        .layanan-ringkas {
+            background-color: var(--abu-muda);
+        }
+
+        .layanan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .layanan-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .layanan-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .layanan-card i {
+            font-size: 2.5rem;
+            color: var(--biru-langit);
+            margin-bottom: 20px;
+        }
+
+        /* QUOTE SECTION */
+        .quote-section {
+            background-color: var(--biru-langit);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--orange-terang);
+        }
+
+        .about-img {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .visi-misi {
+            margin-top: 30px;
+        }
+
+        .visi-misi h3 {
+            color: var(--biru-langit);
+            margin-top: 20px;
+        }
+
+        .visi-misi ul {
+            margin-left: 20px;
+            list-style-type: disc;
+        }
+
+        /* SERVICES SECTION */
+        .services {
+            background-color: var(--abu-muda);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
         .service-card:hover {
             transform: translateY(-10px);
         }
-        
+
         .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--biru);
+            background-color: var(--biru-langit);
+            color: var(--white);
+            font-size: 2rem;
+            padding: 20px;
+            text-align: center;
         }
-        
-        .service-card h3 {
-            font-size: 1.3rem;
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            color: var(--text-dark);
             margin-bottom: 15px;
-            color: var(--biru);
         }
-        
-        /* Material & Alat */
-        .materials-grid {
+
+        .service-content ul {
+            margin-left: 20px;
+            list-style-type: disc;
+            margin-bottom: 20px;
+        }
+
+        /* MATERIAL SECTION */
+        .material {
+            background-color: var(--white);
+        }
+
+        .material-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .material-card {
+            background-color: var(--abu-muda);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .material-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .material-img {
+            height: 180px;
+            background-color: var(--biru-muda);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--biru-langit);
+        }
+
+        .material-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .material-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .material-price {
+            color: var(--orange-terang);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* GALLERY SECTION */
+        .gallery {
+            background-color: var(--abu-muda);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
-        
-        .material-category {
-            background-color: var(--putih);
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 250px;
+            box-shadow: var(--shadow);
         }
-        
-        .material-category h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--biru);
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: var(--white);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        /* TESTIMONIAL SECTION */
+        .testimonial {
+            background-color: var(--biru-langit);
+            color: var(--white);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-track {
             display: flex;
-            align-items: center;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 20px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            color: var(--text-dark);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .testimonial-stars {
+            color: var(--orange-terang);
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            color: var(--biru-langit);
+        }
+
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
             gap: 10px;
         }
-        
-        .material-category ul {
-            list-style: none;
+
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
         }
-        
-        .material-category li {
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
+
+        .testimonial-dot.active {
+            background-color: var(--white);
         }
-        
-        .material-category li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--orange);
-            font-weight: bold;
+
+        /* BLOG SECTION */
+        .blog {
+            background-color: var(--white);
         }
-        
-        /* Why Choose Us */
-        .why-us {
-            background-color: var(--abu);
-        }
-        
-        .benefits {
+
+        .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
-        
-        .benefit {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: var(--putih);
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--orange);
-        }
-        
-        .benefit h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--biru);
-        }
-        
-        /* Contact */
-        .contact-info {
+
+        .blog-card {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 50px;
+            background-color: var(--abu-muda);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
         }
-        
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-img {
+            width: 40%;
+            background-color: var(--biru-muda);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--biru-langit);
+        }
+
+        .blog-content {
+            padding: 20px;
+            width: 60%;
+        }
+
+        .blog-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .blog-excerpt {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        /* PROMO SECTION */
+        .promo {
+            background-color: var(--orange-lembut);
+            text-align: center;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .promo-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-badge {
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background-color: var(--orange-terang);
+            color: var(--white);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-weight: 700;
+        }
+
+        .promo-icon {
+            font-size: 2.5rem;
+            color: var(--orange-terang);
+            margin-bottom: 20px;
+        }
+
+        .promo-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 15px;
+        }
+
+        /* CONTACT SECTION */
+        .contact {
+            background-color: var(--biru-muda);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            color: var(--biru-langit);
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
         .contact-item {
             display: flex;
-            align-items: center;
-            gap: 15px;
-            background-color: var(--abu);
-            padding: 15px 25px;
-            border-radius: 8px;
+            align-items: flex-start;
+            margin-bottom: 15px;
         }
-        
+
         .contact-icon {
-            font-size: 1.5rem;
-            color: var(--biru);
+            width: 40px;
+            font-size: 1.2rem;
+            color: var(--orange-terang);
         }
-        
-        .whatsapp-button {
-            display: inline-block;
-            background-color: #25D366;
-            color: var(--putih);
-            padding: 15px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--biru-langit);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .map-container {
+            margin-top: 50px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .map-placeholder {
+            height: 300px;
+            background-color: var(--biru-langit);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            max-width: 300px;
-            margin: 0 auto;
+            color: var(--white);
+            font-size: 1.2rem;
         }
-        
-        .whatsapp-button:hover {
-            background-color: #128C7E;
-        }
-        
-        /* Footer */
+
+        /* FOOTER */
         footer {
-            background-color: var(--biru);
-            color: var(--putih);
-            padding: 50px 0 20px;
+            background-color: var(--biru-langit);
+            color: var(--white);
+            padding: 60px 0 30px;
         }
-        
+
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 40px;
         }
-        
-        .footer-column h3 {
-            font-size: 1.3rem;
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 20px;
-            color: var(--orange);
         }
-        
-        .footer-column p, .footer-column a {
-            color: var(--putih);
-            text-decoration: none;
-            margin-bottom: 10px;
-            display: block;
+
+        .footer-about p {
+            margin-bottom: 20px;
         }
-        
-        .footer-column a:hover {
-            color: var(--orange-muda);
+
+        .footer-links h3, .footer-services h3, .footer-contact h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
         }
-        
-        .copyright {
+
+        .footer-links h3::after, .footer-services h3::after, .footer-contact h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--orange-terang);
+        }
+
+        .footer-links ul li, .footer-services ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a:hover, .footer-services a:hover {
+            color: var(--orange-terang);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--orange-terang);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--orange-terang);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        /* Responsive Design */
+
+        /* RESPONSIVE STYLES */
+        @media (max-width: 992px) {
+            .keunggulan-grid, .layanan-grid, .services-grid, .material-grid, .gallery-grid, .blog-grid, .promo-grid, .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content, .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .nav-links {
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .nav-menu {
                 position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 70%;
-                height: calc(100vh - 70px);
-                background-color: var(--putih);
+                left: -100%;
+                top: 80px;
                 flex-direction: column;
-                align-items: center;
-                padding-top: 50px;
-                transition: right 0.3s;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                background-color: var(--white);
+                width: 100%;
+                text-align: center;
+                transition: var(--transition);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
             }
             
-            .nav-links.active {
-                right: 0;
+            .nav-menu.active {
+                left: 0;
             }
             
-            .nav-links li {
+            .nav-item {
                 margin: 15px 0;
             }
             
-            .hamburger {
-                display: block;
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .blog-card {
+                flex-direction: column;
+            }
+            
+            .blog-img, .blog-content {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .keunggulan-grid, .layanan-grid, .services-grid, .material-grid, .gallery-grid, .blog-grid, .promo-grid, .footer-content {
+                grid-template-columns: 1fr;
             }
             
             .hero h1 {
                 font-size: 2rem;
             }
             
-            .about-content {
-                flex-direction: column;
+            .hero p {
+                font-size: 1rem;
             }
             
-            .contact-info {
-                flex-direction: column;
-                align-items: center;
+            .section {
+                padding: 60px 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- HEADER -->
     <header>
         <div class="container">
             <nav class="navbar">
-                <div class="logo">Makmur <span>Jaya Abadi</span></div>
-                <ul class="nav-links">
-                    <li><a href="#home">Beranda</a></li>
-                    <li><a href="#about">Tentang Kami</a></li>
-                    <li><a href="#services">Layanan</a></li>
-                    <li><a href="#materials">Material</a></li>
-                    <li><a href="#why-us">Mengapa Kami</a></li>
-                    <li><a href="#contact">Kontak</a></li>
+                <a href="#" class="logo">Bangunan<span>Kediri</span>.com</a>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Beranda</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Tentang Kami</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Layanan</a></li>
+                    <li class="nav-item"><a href="#material" class="nav-link">Material</a></li>
+                    <li class="nav-item"><a href="#gallery" class="nav-link">Galeri</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Kontak</a></li>
                 </ul>
-                <div class="hamburger">☰</div>
+                
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- HERO SECTION -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Makmur Jaya Abadi</h1>
-            <p>Jasa Reparasi & Penyedia Material Konstruksi Bangunan</p>
-            <a href="#contact" class="cta-button">Hubungi Kami</a>
+            <h1>Bangunankediri.com</h1>
+            <p>Solusi Cepat & Terpercaya untuk Pembangunan dan Renovasi di Kediri</p>
+            <p>Dari perbaikan kecil hingga pembangunan besar — kami hadir untuk mewujudkan hunian impian Anda dengan tenaga profesional dan material terbaik.</p>
+            
+            <div class="hero-buttons">
+                <a href="https://wa.me/6285843401996" class="btn btn-primary">
+                    <i class="fab fa-whatsapp"></i> Hubungi Kami via WhatsApp
+                </a>
+                <a href="#services" class="btn btn-secondary">
+                    <i class="fas fa-tools"></i> Lihat Layanan Kami
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Tentang Kami -->
-    <section id="about">
+    <!-- KEUNGGULAN SECTION -->
+    <section class="section keunggulan">
         <div class="container">
-            <div class="section-title">
-                <h2>Tentang Kami</h2>
+            <div class="keunggulan-grid">
+                <div class="keunggulan-item">
+                    <div class="keunggulan-icon">
+                        <i class="fas fa-bricks"></i>
+                    </div>
+                    <h3>Material Berkualitas</h3>
+                    <p>Kami hanya menggunakan material terbaik untuk memastikan hasil konstruksi yang kuat dan tahan lama.</p>
+                </div>
+                
+                <div class="keunggulan-item">
+                    <div class="keunggulan-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3>Tenaga Profesional</h3>
+                    <p>Tim ahli kami berpengalaman dalam berbagai proyek konstruksi dengan standar kualitas terbaik.</p>
+                </div>
+                
+                <div class="keunggulan-item">
+                    <div class="keunggulan-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Tepat Waktu & Terpercaya</h3>
+                    <p>Kami mengutamakan ketepatan waktu penyelesaian proyek dan menjaga kepercayaan pelanggan.</p>
+                </div>
             </div>
+        </div>
+    </section>
+
+    <!-- LAYANAN RINGKAS SECTION -->
+    <section class="section layanan-ringkas">
+        <div class="container">
+            <h2 class="section-title">Layanan Utama Kami</h2>
+            
+            <div class="layanan-grid">
+                <div class="layanan-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Jasa Renovasi & Pembangunan</h3>
+                    <p>Layanan lengkap untuk renovasi rumah, pembangunan baru, dan perbaikan struktur bangunan.</p>
+                </div>
+                
+                <div class="layanan-card">
+                    <i class="fas fa-truck-loading"></i>
+                    <h3>Penjualan Material Bangunan</h3>
+                    <p>Menyediakan berbagai material bangunan berkualitas dengan harga kompetitif.</p>
+                </div>
+                
+                <div class="layanan-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Sewa & Penjualan Alat Konstruksi</h3>
+                    <p>Menyewakan dan menjual berbagai alat konstruksi untuk mendukung proyek Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUOTE SECTION -->
+    <section class="quote-section">
+        <div class="container">
+            <blockquote>"Bangunan kuat dimulai dari pondasi kepercayaan."</blockquote>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section about" id="about">
+        <div class="container">
+            <h2 class="section-title">Tentang Kami</h2>
+            
             <div class="about-content">
                 <div class="about-text">
-                    <p><strong>Makmur Jaya Abadi</strong> adalah usaha yang bergerak di bidang reparasi bangunan serta penyediaan material dan alat konstruksi untuk kebutuhan pembangunan maupun renovasi. Dengan tenaga kerja yang berpengalaman dan bahan berkualitas, kami siap membantu mewujudkan bangunan yang kokoh, rapi, dan tahan lama.</p>
-                    <p>Kami melayani proyek skala rumahan, kantor, tempat ibadah, hingga bangunan komersial, dengan pelayanan cepat, tepat, dan harga bersahabat.</p>
+                    <h2>Siapa Kami dan Apa yang Kami Bangun</h2>
+                    <p><strong>Bangunankediri.com</strong> adalah layanan terpadu di bidang konstruksi, renovasi, dan penjualan material bangunan yang berpusat di Kediri. Kami membantu masyarakat dalam mewujudkan bangunan yang kuat, indah, dan fungsional — dengan pelayanan profesional, harga bersahabat, dan ketepatan waktu yang terjamin.</p>
+                    
+                    <div class="visi-misi">
+                        <h3>Visi</h3>
+                        <p>Menjadi mitra terpercaya dalam pembangunan dan perbaikan bangunan di Kediri dan sekitarnya.</p>
+                        
+                        <h3>Misi</h3>
+                        <ul>
+                            <li>Memberikan layanan konstruksi dan material berkualitas tinggi.</li>
+                            <li>Menjaga kepuasan pelanggan melalui hasil kerja rapi dan jujur.</li>
+                            <li>Menyediakan solusi cepat dan efisien untuk setiap kebutuhan bangunan.</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="about-image">
-                    <!-- Placeholder untuk gambar -->
-                    <div style="background-color: #e2e8f0; height: 300px; display: flex; align-items: center; justify-content: center; color: var(--abu-gelap);">
-                        Gambar Perusahaan
+                
+                <div class="about-img">
+                    <div style="height: 400px; background-color: var(--biru-muda); display: flex; align-items: center; justify-content: center; color: var(--biru-langit); font-size: 1.2rem;">
+                        Foto Tim & Proyek
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Layanan Kami -->
-    <section class="services" id="services">
+    <!-- SERVICES SECTION -->
+    <section class="section services" id="services">
         <div class="container">
-            <div class="section-title">
-                <h2>Layanan Kami</h2>
-            </div>
+            <h2 class="section-title">Layanan Profesional Kami</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Dari renovasi kecil hingga proyek besar – kami siap melayani.</p>
+            
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Jasa Reparasi & Konstruksi</h3>
-                    <ul>
-                        <li>Renovasi rumah, ruko, dan kantor</li>
-                        <li>Perbaikan atap bocor dan plafon rusak</li>
-                        <li>Pemasangan keramik, batu bata, dan dinding</li>
-                        <li>Pengecatan interior & eksterior</li>
-                        <li>Pembuatan kanopi, pagar, dan dak beton</li>
-                        <li>Instalasi listrik & pipa air</li>
-                        <li>Perawatan dan perbaikan bangunan lama</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Material & Alat -->
-    <section id="materials">
-        <div class="container">
-            <div class="section-title">
-                <h2>Material & Alat Konstruksi</h2>
-            </div>
-            <div class="materials-grid">
-                <div class="material-category">
-                    <h3>🧱 Material Bangunan</h3>
-                    <ul>
-                        <li>Semen, pasir, batu bata, koral</li>
-                        <li>Besi beton, baja ringan, dan paku</li>
-                        <li>Cat tembok, thinner, dan kuas</li>
-                        <li>Keramik, granit, dan tegel</li>
-                        <li>Triplek, kayu, dan gypsum</li>
-                        <li>Pipa PVC dan perlengkapan sanitasi</li>
-                    </ul>
-                </div>
-                <div class="material-category">
-                    <h3>🛠️ Alat & Perlengkapan Konstruksi</h3>
-                    <ul>
-                        <li>Gerobak dorong, sekop, dan cangkul</li>
-                        <li>Mesin bor, gergaji, dan alat potong keramik</li>
-                        <li>Tangga, ember bangunan, dan cetok</li>
-                        <li>Alat safety kerja (helm, sarung tangan, sepatu boots)</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mengapa Memilih Kami -->
-    <section class="why-us" id="why-us">
-        <div class="container">
-            <div class="section-title">
-                <h2>Mengapa Memilih Kami</h2>
-            </div>
-            <div class="benefits">
-                <div class="benefit">
-                    <div class="benefit-icon">✅</div>
-                    <h3>Tenaga Kerja Berpengalaman</h3>
-                    <p>Tim kami terdiri dari tenaga profesional dengan pengalaman bertahun-tahun di bidang konstruksi.</p>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">✅</div>
-                    <h3>Material Berkualitas & Harga Kompetitif</h3>
-                    <p>Kami menyediakan material berkualitas dengan harga yang bersaing di pasaran.</p>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">✅</div>
-                    <h3>Pelayanan Cepat dan Profesional</h3>
-                    <p>Kami memberikan pelayanan yang cepat, tepat, dan profesional sesuai kebutuhan Anda.</p>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-icon">✅</div>
-                    <h3>Melayani Partai Kecil Maupun Besar</h3>
-                    <p>Kami melayani berbagai skala proyek, dari perbaikan rumah hingga konstruksi bangunan komersial.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Kontak -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Hubungi Kami</h2>
-            </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div>
-                        <strong>Alamat</strong>
-                        <p>Jl. Sumur Pompa RT 6 RW 11, Desa Gabru, Kec. Gurah, Kediri</p>
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Jasa Reparasi & Renovasi</h3>
+                        <ul>
+                            <li>Perbaikan atap bocor dan dinding retak</li>
+                            <li>Pengecatan interior dan eksterior</li>
+                            <li>Pemasangan keramik, plafon, gypsum</li>
+                            <li>Perbaikan instalasi listrik & pipa air</li>
+                        </ul>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Minta Penawaran Gratis</a>
                     </div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div>
-                        <strong>WhatsApp</strong>
-                        <p>0858-4340-1996</p>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Pembangunan Baru</h3>
+                        <ul>
+                            <li>Rumah tinggal, ruko, dan gudang</li>
+                            <li>Pondasi, dak beton, dan struktur bangunan</li>
+                            <li>Tempat ibadah dan fasilitas umum</li>
+                        </ul>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Minta Penawaran Gratis</a>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Jasa Tambahan</h3>
+                        <ul>
+                            <li>Desain dan estimasi biaya gratis</li>
+                            <li>Pembuatan pagar, kanopi, dan taman minimalis</li>
+                        </ul>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Minta Penawaran Gratis</a>
                     </div>
                 </div>
             </div>
-            <p style="text-align: center; margin-bottom: 30px;">Untuk konsultasi, pemesanan material, atau survei lokasi gratis:</p>
-            <a href="https://wa.me/6285843401996" class="whatsapp-button" target="_blank">
-                <span>📱</span> Hubungi via WhatsApp
-            </a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- MATERIAL SECTION -->
+    <section class="section material" id="material">
+        <div class="container">
+            <h2 class="section-title">Material dan Alat Berkualitas</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Kami menyediakan kebutuhan konstruksi lengkap — dari pondasi hingga finishing.</p>
+            
+            <h3 style="text-align: center; margin-bottom: 30px; color: var(--biru-langit);">Material Bangunan</h3>
+            <div class="material-grid">
+                <div class="material-card">
+                    <div class="material-img">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Semen & Pasir</h3>
+                        <p class="material-price">Rp 70.000 - 120.000</p>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Pesan via WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-img">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Batu Bata</h3>
+                        <p class="material-price">Rp 800 - 1.200 / biji</p>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Pesan via WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-img">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Besi Beton</h3>
+                        <p class="material-price">Rp 12.000 - 18.000 / kg</p>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Pesan via WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-img">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Cat Tembok</h3>
+                        <p class="material-price">Rp 150.000 - 350.000 / kaleng</p>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Pesan via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="text-align: center; margin: 50px 0 30px; color: var(--biru-langit);">Alat Konstruksi</h3>
+            <div class="material-grid">
+                <div class="material-card">
+                    <div class="material-img">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Perkakas Tangan</h3>
+                        <p class="material-price">Sewa mulai Rp 20.000 / hari</p>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Pesan via WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-img">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Alat Listrik</h3>
+                        <p class="material-price">Sewa mulai Rp 50.000 / hari</p>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Pesan via WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-img">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Alat Safety</h3>
+                        <p class="material-price">Rp 30.000 - 150.000</p>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Pesan via WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="material-card">
+                    <div class="material-img">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <div class="material-content">
+                        <h3>Alat Berat</h3>
+                        <p class="material-price">Sewa mulai Rp 500.000 / hari</p>
+                        <a href="https://wa.me/6285843401996" class="btn btn-primary">Pesan via WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <h2 class="section-title">Galeri Proyek</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Dokumentasi hasil kerja terbaik kami di berbagai lokasi di Kediri.</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-color: var(--biru-muda);"></div>
+                    <div class="gallery-overlay">
+                        <h3>Renovasi Rumah - Gurah</h3>
+                        <p>Durasi: 3 minggu</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-color: var(--biru-muda);"></div>
+                    <div class="gallery-overlay">
+                        <h3>Pembangunan Ruko - Kota Kediri</h3>
+                        <p>Durasi: 2 bulan</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-color: var(--biru-muda);"></div>
+                    <div class="gallery-overlay">
+                        <h3>Perbaikan Atap - Pesantren</h3>
+                        <p>Durasi: 1 minggu</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-color: var(--biru-muda);"></div>
+                    <div class="gallery-overlay">
+                        <h3>Pengecatan Eksterior - Ngadiluwih</h3>
+                        <p>Durasi: 10 hari</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-color: var(--biru-muda);"></div>
+                    <div class="gallery-overlay">
+                        <h3>Pembangunan Pagar - Badas</h3>
+                        <p>Durasi: 5 hari</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <div class="gallery-img" style="background-color: var(--biru-muda);"></div>
+                    <div class="gallery-overlay">
+                        <h3>Renovasi Dapur - Purwoasri</h3>
+                        <p>Durasi: 2 minggu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL SECTION -->
+    <section class="section testimonial">
+        <div class="container">
+            <h2 class="section-title" style="color: var(--white);">Testimoni Pelanggan</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: var(--white);">Apa kata pelanggan tentang kami</p>
+            
+            <div class="testimonial-slider">
+                <div class="testimonial-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Timnya cepat dan hasilnya rapi. Rumah saya jadi lebih nyaman. Terima kasih Bangunankediri.com!"</p>
+                            <p class="testimonial-author">Pak Hadi, Gurah Kediri</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Material berkualitas dan harga bersaing. Proses pembangunan rumah saya selesai tepat waktu sesuai rencana."</p>
+                            <p class="testimonial-author">Bu Sari, Kota Kediri</p>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-slide">
+                        <div class="testimonial-card">
+                            <div class="testimonial-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="testimonial-text">"Sangat puas dengan jasa renovasi dapur. Hasilnya sesuai ekspektasi dan biaya transparan tanpa ada tambahan tersembunyi."</p>
+                            <p class="testimonial-author">Pak Budi, Ngadiluwih</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-slide="0"></div>
+                    <div class="testimonial-dot" data-slide="1"></div>
+                    <div class="testimonial-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section class="section blog">
+        <div class="container">
+            <h2 class="section-title">Artikel & Tips</h2>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>5 Tips Renovasi Rumah dengan Budget Terbatas</h3>
+                        <p class="blog-excerpt">Pelajari strategi cerdas untuk merenovasi rumah Anda tanpa menguras tabungan. Fokus pada prioritas dan tahapan yang tepat.</p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Cara Memilih Cat Tembok yang Tahan Lama di Cuaca Panas</h3>
+                        <p class="blog-excerpt">Tips memilih cat tembok yang tidak mudah pudar dan tahan terhadap cuaca ekstrem, khususnya untuk daerah beriklim tropis.</p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Perbedaan Besi Beton Ulir dan Polos</h3>
+                        <p class="blog-excerpt">Memahami karakteristik, kelebihan, dan aplikasi masing-masing jenis besi beton untuk konstruksi yang optimal.</p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="blog-content">
+                        <h3>Panduan Memilih Kontraktor yang Tepat untuk Proyek Anda</h3>
+                        <p class="blog-excerpt">Ciri-ciri kontraktor profesional yang bisa diandalkan dan tips menghindari penipuan dalam jasa konstruksi.</p>
+                        <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMO SECTION -->
+    <section class="section promo">
+        <div class="container">
+            <h2 class="section-title">Promo Spesial Bulan Ini!</h2>
+            
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <div class="promo-badge">DISKON</div>
+                    <div class="promo-icon">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3>Diskon 10% Jasa Pengecatan</h3>
+                    <p>Dapatkan diskon 10% untuk jasa pengecatan rumah. Berlaku hingga akhir bulan.</p>
+                    <a href="https://wa.me/6285843401996" class="btn btn-primary">Klaim Promo</a>
+                </div>
+                
+                <div class="promo-card">
+                    <div class="promo-badge">GRATIS</div>
+                    <div class="promo-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Gratis Ongkir Material</h3>
+                    <p>Gratis ongkos kirim untuk pembelian material di atas Rp 1.000.000.</p>
+                    <a href="https://wa.me/6285843401996" class="btn btn-primary">Klaim Promo</a>
+                </div>
+                
+                <div class="promo-card">
+                    <div class="promo-badge">HEMAT</div>
+                    <div class="promo-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Paket Renovasi Dapur</h3>
+                    <p>Paket hemat renovasi dapur mulai Rp 5 juta dengan material berkualitas.</p>
+                    <a href="https://wa.me/6285843401996" class="btn btn-primary">Klaim Promo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px;">Kami siap melayani konsultasi dan pemesanan setiap hari kerja.</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p><strong>Alamat:</strong><br>
+                                Jl. Sumur Pompa RT 6 RW 11, Desa Gabru, Kec. Gurah, Kediri</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <p><strong>WhatsApp:</strong><br>
+                                0858-4340-1996</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p><strong>Email:</strong><br>
+                                info@bangunankediri.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <p><strong>Jam Operasional:</strong><br>
+                                Senin – Sabtu, 08.00 – 17.00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Nomor WhatsApp</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fab fa-whatsapp"></i> Kirim Pesan via WhatsApp
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i> Peta Lokasi Google Maps
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Makmur Jaya Abadi</h3>
-                    <p>Jasa Reparasi & Penyedia Material Konstruksi Bangunan. Melayani dengan profesionalisme dan kualitas terbaik.</p>
+                <div class="footer-about">
+                    <div class="footer-logo">Bangunankediri.com</div>
+                    <p>Solusi lengkap untuk pembangunan, renovasi, dan material bangunan di Kediri dan sekitarnya.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/6285843401996" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="footer-column">
+                
+                <div class="footer-links">
+                    <h3>Menu</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang Kami</a></li>
+                        <li><a href="#services">Layanan</a></li>
+                        <li><a href="#material">Material</a></li>
+                        <li><a href="#gallery">Galeri</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-services">
                     <h3>Layanan</h3>
-                    <a href="#services">Jasa Reparasi & Konstruksi</a>
-                    <a href="#materials">Material Bangunan</a>
-                    <a href="#materials">Alat Konstruksi</a>
+                    <ul>
+                        <li><a href="#services">Renovasi Rumah</a></li>
+                        <li><a href="#services">Pembangunan Baru</a></li>
+                        <li><a href="#services">Perbaikan Struktur</a></li>
+                        <li><a href="#material">Material Bangunan</a></li>
+                        <li><a href="#material">Sewa Alat</a></li>
+                    </ul>
                 </div>
-                <div class="footer-column">
+                
+                <div class="footer-contact">
                     <h3>Kontak</h3>
-                    <p>📍 Jl. Sumur Pompa RT 6 RW 11, Desa Gabru, Kec. Gurah, Kediri</p>
-                    <p>📞 0858-4340-1996</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Sumur Pompa RT 6 RW 11, Desa Gabru, Kec. Gurah, Kediri</p>
+                    <p><i class="fab fa-whatsapp"></i> 0858-4340-1996</p>
+                    <p><i class="fas fa-envelope"></i> info@bangunankediri.com</p>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 Makmur Jaya Abadi. All rights reserved.</p>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Bangunankediri.com – Solusi Bangunan Lengkap untuk Kediri dan Sekitarnya</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Toggle menu mobile
+        // Mobile Navigation Toggle
         const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+        const navMenu = document.querySelector('.nav-menu');
         
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
         });
         
-        // Tutup menu mobile saat klik link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+        
+        // Testimonial Slider
+        const track = document.querySelector('.testimonial-track');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Update active dot
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[index].classList.add('active');
+            
+            currentSlide = index;
+        }
+        
+        // Add click event to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
             });
         });
         
-        // Smooth scroll untuk anchor links
+        // Auto slide testimonial
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % dots.length;
+            showSlide(currentSlide);
+        }, 5000);
+        
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            const text = `Halo Bangunankediri.com, saya ${name}. ${message}. Silakan hubungi saya di ${phone}.`;
+            const encodedText = encodeURIComponent(text);
+            
+            window.open(`https://wa.me/6285843401996?text=${encodedText}`, '_blank');
+        });
+        
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+                if(targetId === '#') return;
                 
                 const targetElement = document.querySelector(targetId);
-                if (targetElement) {
+                if(targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
+        });
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            }
         });
     </script>
 </body>
